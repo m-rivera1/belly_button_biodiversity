@@ -31,9 +31,11 @@ var trace = {
     y: topTen2 ,
     text: hoverLabels,
     type: "bar",
-    orientation: "h"
+    orientation: "h",
+    xaxis: {title: 'Count'},
+    
 };
-var plotData = [trace];    
+var barData = [trace];    
 
 
 var layout = {
@@ -52,5 +54,34 @@ var layout = {
 };
 
 
-Plotly.newPlot("plot", plotData , layout);
+Plotly.newPlot("plot", barData , layout);
 });
+
+// Bubble chart
+
+d3.json('data/samples.json').then(function(data_json) {
+    console.log(data_json);
+    xData = data_json.samples[0].otu_ids;
+    yData = data_json.samples[1].sample_values;
+
+var traceBubble = {
+    x: xData,
+    y: yData,
+    mode: 'markers',
+    marker: {
+      size: yData,
+      color: xData
+    }
+  };
+  
+  var data = [traceBubble];
+  
+  var layoutBubble = {
+    xaxis:{title: "OTU ID"},
+    showlegend: false,
+    height: 600,
+    width: 1000
+  };
+  
+  Plotly.newPlot('bubble', traceBubble, layoutBubble);
+})
