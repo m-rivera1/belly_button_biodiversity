@@ -17,8 +17,10 @@ console.log(hover);
 
 var topTen = otuIds.slice(0,10)
 var topTenLabels = otuLabels.slice(0,10);
+var topTenLabels = topTenLabels.map(label => "OTU " + label);
 var hoverLabels = hover.slice(0,10);
-console.log(topTen, topTenLabels, hoverLabels);
+console.log(topTen, hoverLabels);
+console.log('Top Ten Lebels: ${topTenLabels}')
 
 var trace = {
     x: topTen,
