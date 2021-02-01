@@ -8,7 +8,7 @@ console.log(data_json);
 var otuIds = data_json.samples[0].otu_ids;
 console.log(otuIds);
 
-var otuLabels = data_json.samples[1].sample_values;
+var otuLabels = data_json.samples[1].sample_values.slice(0,10);
 console.log(otuLabels);
 
 var hover = data_json.samples[1].otu_labels;
@@ -18,12 +18,13 @@ console.log(hover);
 var topTen = otuIds.slice(0,10).reverse()
 var topTen2 = topTen.map(label => "OTU " + label);
 
-var topTenLabels = otuLabels.slice(0,10);
-var topTenLabels = topTenLabels.map(label => "OTU " + label);
+var topTenLabels = otuLabels.reverse();
+
 
 var hoverLabels = hover.slice(0,10);
-console.log(topTen, hoverLabels);
-console.log('Top Ten Labels: ${topTenLabels}')
+
+console.log(topTen, hoverLabels, topTenLabels);
+
 
 var trace = {
     x: topTenLabels,
@@ -36,7 +37,7 @@ var plotData = [trace];
 
 
 var layout = {
-    title: "Belly button fungus Top Ten",
+    title: "Top Ten Operational Taxonomic Units (OTU's)",
     yaxis:{tickmode: "linear",
     },
     margin: {
