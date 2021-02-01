@@ -11,20 +11,23 @@ console.log(otuIds);
 var otuLabels = data_json.samples[1].sample_values;
 console.log(otuLabels);
 
-var hover = data_json.samples[0].otu_labels;
+var hover = data_json.samples[1].otu_labels;
 console.log(hover);
 
 
-var topTen = otuIds.slice(0,10)
+var topTen = otuIds.slice(0,10).reverse()
+var topTen2 = topTen.map(label => "OTU " + label);
+
 var topTenLabels = otuLabels.slice(0,10);
 var topTenLabels = topTenLabels.map(label => "OTU " + label);
+
 var hoverLabels = hover.slice(0,10);
 console.log(topTen, hoverLabels);
-console.log('Top Ten Lebels: ${topTenLabels}')
+console.log('Top Ten Labels: ${topTenLabels}')
 
 var trace = {
-    x: topTen,
-    y: topTenLabels,
+    x: topTenLabels,
+    y: topTen2 ,
     text: hoverLabels,
     type: "bar",
     orientation: "h"
