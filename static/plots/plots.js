@@ -96,3 +96,11 @@ d3.json('data/samples.json').then(function(jsonData) {
     Plotly.newPlot("bubble", data1, layoutBubble); 
 
 });
+
+// DemographicInfo
+// pull in data from json file
+d3.json('data/samples.json').then(function(jsonData) {
+    // varible for data
+    var metadata = jsonData.metadata;
+    console.log(metadata)
+}); 
