@@ -97,10 +97,26 @@ d3.json('data/samples.json').then(function(jsonData) {
 
 });
 
-// DemographicInfo
+// Drop down selection for ID
+
+var userSelection = d3.select("#selDataset");
+
 // pull in data from json file
 d3.json('data/samples.json').then(function(jsonData) {
     // varible for data
-    var metadata = jsonData.metadata;
-    console.log(metadata)
+    var names = jsonData.names;
+    console.log(names)
+
+    names.forEach((id) => {
+        userSelection
+            .append("option")
+            .text(id)
+            .property("value", id);
+    })
+
+
+
+    //filter data for panel
+    //var names = metadata.filter(data =>metadata.names);
+    //console.log(names)
 }); 
