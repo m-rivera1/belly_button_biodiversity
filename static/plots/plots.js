@@ -106,7 +106,7 @@ d3.json('data/samples.json').then(function(jsonData) {
     // varible for data
     var names = jsonData.names;
     console.log(names)
-
+//Loop to populate the selection options available
     names.forEach((id) => {
         userSelection
             .append("option")
@@ -114,9 +114,15 @@ d3.json('data/samples.json').then(function(jsonData) {
             .property("value", id);
     })
 
-
-
-    //filter data for panel
-    //var names = metadata.filter(data =>metadata.names);
-    //console.log(names)
 }); 
+
+// pull in data from json file
+d3.json('data/samples.json').then(function(jsonData) {
+    // varible for data
+    var metadata = jsonData.metadata;
+
+//filter data for panel
+
+    //var names = metadata.filter(data =>metadata.names);
+    console.log(metadata)
+})
