@@ -1,3 +1,6 @@
+
+// bar graph
+//pull in data from json file
 d3.json('data/samples.json').then(function(data_json) {
     console.log(data_json);
     
@@ -5,14 +8,14 @@ d3.json('data/samples.json').then(function(data_json) {
     // Grab values from the data json object to build the plots
     var otuIds = data_json.samples[0].otu_ids;
     console.log(otuIds);
-    
+    // slice to get the top ten values
     var otuLabels = data_json.samples[1].sample_values.slice(0,10);
     console.log(otuLabels);
     
     var hover = data_json.samples[1].otu_labels;
     console.log(hover);
     
-    
+    // slice and reverse some of data
     var topTen = otuIds.slice(0,10).reverse()
     var topTen2 = topTen.map(label => "OTU " + label);
     
@@ -23,7 +26,7 @@ d3.json('data/samples.json').then(function(data_json) {
     
     console.log(topTen, hoverLabels, topTenLabels);
     
-    
+    // create variable for bar chart data
     var trace = {
         x: topTenLabels,
         y: topTen2 ,
@@ -33,9 +36,10 @@ d3.json('data/samples.json').then(function(data_json) {
         xaxis: {title: 'Count'},
         
     };
+    // create data variable 
     var barData = [trace];    
     
-    
+    // set the layout of the bar chart
     var layout = {
         title: "Top Ten Operational Taxonomic Units (OTU's)",
         yaxis:{tickmode: "linear",
@@ -51,14 +55,14 @@ d3.json('data/samples.json').then(function(data_json) {
      
     };
     
-    
+    // create the bar chart
     Plotly.newPlot("plot", barData , layout);
     })        
 
 
 
-
-
+// bubble chart
+//pull in data from json file
 d3.json('data/samples.json').then(function(jsonData) {
 
     //local data values
