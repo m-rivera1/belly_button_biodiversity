@@ -1,4 +1,9 @@
 
+bar()
+bubble()
+DemographicsPanel()
+
+function bar(metadata) {
 // bar graph
 //pull in data from json file
 d3.json('data/samples.json').then(function(data_json) {
@@ -58,9 +63,9 @@ d3.json('data/samples.json').then(function(data_json) {
     // create the bar chart
     Plotly.newPlot("plot", barData , layout);
     })        
+}
 
-
-
+function bubble(metadata) {
 // bubble chart
 //pull in data from json file
 d3.json('data/samples.json').then(function(jsonData) {
@@ -96,6 +101,7 @@ d3.json('data/samples.json').then(function(jsonData) {
     Plotly.newPlot("bubble", data1, layoutBubble); 
 
 });
+}
 
 // Drop down selection for ID
 
@@ -116,7 +122,8 @@ d3.json('data/samples.json').then(function(jsonData) {
 
 }); 
 
-function Info(id) {
+// Demographics Panel
+function DemographicsPanel(id) {
     d3.json('data/samples.json').then(function(jsonData) {
     
       //local data values
@@ -139,5 +146,15 @@ function Info(id) {
       });
       })
     }
-    Info()
-        
+   
+
+function optionsChanged(newMetadata) {
+    bar(newMetadata);
+    bubble(newMetadata);
+    
+
+}
+  
+bar()
+bubble()
+DemographicsPanel()
