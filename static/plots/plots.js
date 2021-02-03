@@ -115,23 +115,29 @@ d3.json('data/samples.json').then(function(jsonData) {
     })
 
 }); 
-// Create demographicInfo panel
-// pull in data from json file
-d3.json('data/samples.json').then(function(jsonData) {
 
-    // varible for data
-    var metadata = jsonData.metadata;
-    console.log(metadata)
-
-    //select the id/class/div to place the data
-    var demographicInfo = d3.select("sample-metadata");
-
-    var selectionResults = metadata.filter(data => data.id);
-    console.log(selectionResults)
-
-    // get selectionResults data for the user selected ID and add to the panel
-    Object.defineProperties(selectionResults).forEach(([key, value]) => {
+function Info(id) {
+    d3.json('data/samples.json').then(function(jsonData) {
+    
+      //local data values
+      metadata = jsonData.metadata[0];
+    
+     console.log(metadata)
+    
+      var demographicInfo = d3.select('#sample-metadata');
+    
+      demographicInfo.html("");
+    
+      
+    
+       Object.entries(metadata).forEach(function([key,value]){
+    
+        console.log(Object.entries(metadata));
         var row = demographicInfo.append("p");
-        row.text(value);
-    })
-});
+        row.text(key + ":" + value);
+    
+      });
+      })
+    }
+    Info()
+        
